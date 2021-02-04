@@ -1,10 +1,10 @@
 <?php>
 include_once './util.php';
 class dbconnect{
-  var $pdo; 
+  protected $pdo; 
 
-    function _construct(){
-      $dsn= "mysql:host=". Util::$SERVER_NAME . ";dbname=" . Util::$DB_NAME ."";
+    function __construct(){
+      $dsn= "mysql:host=". Util::$server_name . ";dbname=" . Util::$db_name ."";
   $options = [PDO::ATTR_ERRMODE => PDO::ERRMODE_EXCEPTION,
   PDO::ATTR_EMULATE_PREPARES => false,
  //Notice here that we read data from tables and is presented as an associative array 
@@ -12,7 +12,7 @@ class dbconnect{
   PDO::ATTR_DEFAULT_FETCH_MODE =>PDO::FETCH_ASSOC];
   try {
     //code...
-    $this->pdo = new PDO($dsn, Util::$DB_USER, Util::$DB_USER_PASS, $options);
+    $this->pdo = new PDO($dsn, Util::$db_user, Util::$db_pass, $options);
   } catch ((PDOException $e) {
     echo $e->getMessage(); 
     //throw $th;
