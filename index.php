@@ -1,7 +1,7 @@
 <?php
 include_once 'user.php';
 include_once 'dbconnect.php';
-$conn=new DBConnector();
+$conn=new dbconnect();
 $pdo=$conn->connectToDB  ();
 $event=$_POST['event'];
 if($event=="register"){
@@ -14,6 +14,8 @@ if($event=="register"){
 
    $user=new User($fullname,$email,$city,$password);
    $user->setFullName($fullname);
+    $user->setEmailAddress($email);
+    $user->setCity($city);
    echo $user->register($pdo);
    
    }
