@@ -19,7 +19,7 @@ class User implements Account
 
 
     //class constructor
-    function _construct($email, $pass)
+    function __construct($email, $pass)
     {
         $this->email = $email;
         $this->password = $pass;
